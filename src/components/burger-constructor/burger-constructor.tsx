@@ -10,9 +10,13 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { bun, ingredients } = useSelector((state) => state.constructorBurger);
-  const { order, loading } = useSelector((state) => state.order);
-  const { user } = useSelector((state) => state.user);
+  const bun = useSelector((state) => state.constructorBurger.bun);
+  const ingredients = useSelector(
+    (state) => state.constructorBurger.ingredients
+  );
+  const order = useSelector((state) => state.order.order);
+  const loading = useSelector((state) => state.order.loading);
+  const user = useSelector((state) => state.user.user);
 
   const onOrderClick = () => {
     if (!user) {

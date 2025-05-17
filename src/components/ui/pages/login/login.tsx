@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import {
   Input,
   Button,
@@ -23,6 +23,7 @@ export const LoginUI: FC<LoginUIProps> = ({
         className={`pb-15 ${styles.form}`}
         name='login'
         onSubmit={handleSubmit}
+        autoComplete='on'
       >
         <>
           <div className='pb-6'>
@@ -32,6 +33,7 @@ export const LoginUI: FC<LoginUIProps> = ({
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               name='email'
+              autoComplete='email'
               error={false}
               errorText=''
               size='default'
@@ -42,6 +44,7 @@ export const LoginUI: FC<LoginUIProps> = ({
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               name='password'
+              autoComplete='current-password'
             />
           </div>
           <div className={`pb-6 ${styles.button}`}>
@@ -57,7 +60,7 @@ export const LoginUI: FC<LoginUIProps> = ({
         </>
       </form>
       <div className={`pb-4 ${styles.question} text text_type_main-default`}>
-        Вы - новый пользователь?
+        Вы — новый пользователь?
         <Link to='/register' className={`pl-2 ${styles.link}`}>
           Зарегистрироваться
         </Link>

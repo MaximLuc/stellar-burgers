@@ -7,9 +7,9 @@ import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 
 export const BurgerIngredients: FC = () => {
   const dispatch = useDispatch();
-  const { ingredients, isLoading, error } = useSelector(
-    (state) => state.burger
-  );
+  const ingredients = useSelector((state) => state.burger.ingredients);
+  const isLoading = useSelector((state) => state.burger.isLoading);
+  const error = useSelector((state) => state.burger.error);
 
   useEffect(() => {
     dispatch(fetchIngredients());

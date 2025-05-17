@@ -9,8 +9,8 @@ export const OrderInfo: FC = () => {
   const { number } = useParams<{ number: string }>();
   console.log('number', number);
   const orderNumber = Number(number);
-  const { orders } = useSelector((state) => state.feed);
-  const { ingredients } = useSelector((state) => state.burger);
+  const orders = useSelector((state) => state.feed.orders);
+  const ingredients = useSelector((state) => state.burger.ingredients);
 
   const orderData = useMemo(
     () => orders.find((order) => order.number === orderNumber),

@@ -9,10 +9,11 @@ import styles from './ingredient-details.module.css';
 
 export const IngredientDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch();
   const location = useLocation();
+  const dispatch = useDispatch();
 
-  const { ingredients, isLoading } = useSelector((state) => state.burger);
+  const ingredients = useSelector((state) => state.burger.ingredients);
+  const isLoading = useSelector((state) => state.burger.isLoading);
 
   useEffect(() => {
     if (!ingredients.length) {
@@ -24,11 +25,19 @@ export const IngredientDetails: FC = () => {
     (item: TIngredient) => item._id === id
   );
 
-  const isModal = location.state?.backgroundLocation;
-
-  if (isLoading || !ingredientData) {
+  if (isLoading || !ingredients.length) {
     return <Preloader />;
   }
+
+  if (!ingredientData) {
+    return (
+      <p className='text text_type_main-medium mt-10 text-center'>
+        Ингредиент не найден
+      </p>
+    );
+  }
+
+  const isModal = !!location.state?.backgroundLocation;
 
   return (
     <div className={!isModal ? styles.fullPageWrapper : ''}>
