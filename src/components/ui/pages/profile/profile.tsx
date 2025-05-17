@@ -53,7 +53,7 @@ export const ProfileUI: FC<ProfileUIProps> = ({
         <div className='pb-6'>
           <Input
             type={'password'}
-            placeholder={'Пароль'}
+            placeholder={'********'}
             onChange={handleInputChange}
             value={formValue.password}
             name={'password'}
