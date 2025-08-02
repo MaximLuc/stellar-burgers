@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "name": "Космический краторный бургер",
+  "order": {
+    "_id": "60d3b41abdacab0026a733cd",
+    "status": "done",
+    "name": "Космический краторный бургер",
+    "createdAt": "2024-07-29T15:00:00.000Z",
+    "updatedAt": "2024-07-29T15:00:10.000Z",
+    "number": 12345,
+    "ingredients": [
+      "60d3b41abdacab0026a733c6",
+      "60d3b41abdacab0026a733c7"
+    ]
+  }
+}
