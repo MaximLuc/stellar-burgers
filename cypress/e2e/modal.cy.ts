@@ -3,7 +3,7 @@ describe('Модальные окна ингредиентов', () => {
     cy.intercept('GET', '/api/ingredients', { fixture: 'ingredients.json' }).as(
       'getIngredients'
     );
-    cy.visit('http://192.168.0.202:4000/');
+    cy.visit('/');
     cy.wait('@getIngredients');
   });
 
@@ -12,7 +12,8 @@ describe('Модальные окна ингредиентов', () => {
       '[data-test="ingredient"]',
       'Флюоресцентная булка R2-D3'
     ).click();
-    cy.get('[data-test="modal"]')
+    cy.get('[data-test="modal"]').as('modal');
+    cy.get('@modal')
       .should('exist')
       .and('contain', 'Флюоресцентная булка R2-D3');
   });
@@ -22,9 +23,9 @@ describe('Модальные окна ингредиентов', () => {
       '[data-test="ingredient"]',
       'Флюоресцентная булка R2-D3'
     ).click();
-    cy.get('[data-test="modal"]').should('exist');
+    cy.get('[data-test="modal"]').as('modal');
     cy.get('[data-test="modal-close"]').click();
-    cy.get('[data-test="modal"]').should('not.exist');
+    cy.get('@modal').should('not.exist');
   });
 
   it('закрывает модальное окно по клику на оверлей', () => {
@@ -32,8 +33,8 @@ describe('Модальные окна ингредиентов', () => {
       '[data-test="ingredient"]',
       'Флюоресцентная булка R2-D3'
     ).click();
-    cy.get('[data-test="modal"]').should('exist');
+    cy.get('[data-test="modal"]').as('modal');
     cy.get('[data-test="modal-overlay"]').click({ force: true });
-    cy.get('[data-test="modal"]').should('not.exist');
+    cy.get('@modal').should('not.exist');
   });
 });

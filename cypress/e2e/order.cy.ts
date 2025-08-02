@@ -13,7 +13,7 @@ describe('Оформление заказа', () => {
     window.localStorage.setItem('refreshToken', 'fake-refresh-token');
     cy.setCookie('accessToken', 'fake-access-token');
 
-    cy.visit('http://192.168.0.202:4000/');
+    cy.visit('/');
     cy.wait('@getIngredients');
     cy.wait('@getUser');
   });

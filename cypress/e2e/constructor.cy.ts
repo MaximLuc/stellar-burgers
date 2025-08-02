@@ -3,7 +3,7 @@ describe('Конструктор бургера', () => {
     cy.intercept('GET', '/api/ingredients', { fixture: 'ingredients.json' }).as(
       'getIngredients'
     );
-    cy.visit('http://192.168.0.202:4000/');
+    cy.visit('/');
     cy.wait('@getIngredients');
   });
 
